@@ -46,12 +46,25 @@ class Item {
     return 0;
   }
 
-  // TODO: It's not finisched
-  static void deleteItem() {
-    String temp;
-    if (printItem() == 1) {
+  static void deleteItem(List<Item> items) {
+    int returnValue = printItem();
+    String yesNo;
+    if (returnValue == 1) {
       return;
+    } else if (returnValue == 0) {
+      print("Welcher Artikel soll gelöscht werden? (0-${items.length - 1})?");
+      int deleteNumber = int.parse(stdin.readLineSync());
+      print(
+          "Sind Sie sicher, den Artikel ${items[deleteNumber]._name} zu löschen? (Y/N)");
+      // TODO: yesNo schould be prooft if input is a String
+      do {
+        yesNo = stdin.readLineSync().toUpperCase();
+      } while (yesNo != "Y" && yesNo != "N");
+      if (yesNo == "Y") {
+        items.removeAt(deleteNumber);
+      } else {
+        return;
+      }
     }
-    print("Welcher Artikel soll gelöscht werden? (0-${items[items.length - 1]._count}");
   }
 }

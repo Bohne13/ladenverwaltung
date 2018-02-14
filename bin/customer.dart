@@ -53,7 +53,6 @@ class Customer {
 
   // TODO: The function isn't complete, it actually don't work
   static void deleteCustomer(List<Customer> customers) {
-    //int tmp = 0;
     int returnValue = printCustomers();
     String yesNo;
     if (returnValue == 1) {
@@ -62,7 +61,8 @@ class Customer {
       print("Welcher Kunde soll gelöscht werden? (0-${customers.length - 1})?");
       int deleteNumber = int.parse(stdin.readLineSync());
       print(
-          "Sind sie Sicher, den Kunden ${customers[deleteNumber]._firstName} ${customers[deleteNumber]._lastName} löschen möchten? (Y/N)");
+          "Sind sie sicher, den Kunden ${customers[deleteNumber]._firstName} ${customers[deleteNumber]._lastName} zu löschen? (Y/N)");
+      // TODO: yesNo schould be prooft if input is a String
       do {
         yesNo = stdin.readLineSync().toUpperCase();
       } while (yesNo != "Y" && yesNo != "N");

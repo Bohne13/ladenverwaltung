@@ -66,7 +66,7 @@ void main() {
         deleteAll();
         break;
       case "DI":
-        Item.deleteItem();
+        Item.deleteItem(items);
         break;
       default:
         break;
