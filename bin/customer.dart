@@ -52,21 +52,25 @@ class Customer {
   }
 
   // TODO: The function isn't complete, it actually don't work
-  static int deleteCustomer(List<Customer> customers) {
+  static void deleteCustomer(List<Customer> customers) {
     //int tmp = 0;
     int returnValue = printCustomers();
+    String yesNo;
     if (returnValue == 1) {
-      return 1;
+      return;
     } else if (returnValue == 0) {
       print("Welcher Kunde soll gelöscht werden? (0-${customers.length - 1})?");
       int deleteNumber = int.parse(stdin.readLineSync());
       print(
           "Sind sie Sicher, den Kunden ${customers[deleteNumber]._firstName} ${customers[deleteNumber]._lastName} löschen möchten? (Y/N)");
-      String yesNo = stdin.readLineSync().toUpperCase();
+      do {
+        yesNo = stdin.readLineSync().toUpperCase();
+      } while (yesNo != "Y" && yesNo != "N");
       if (yesNo == "Y") {
         customers.removeAt(deleteNumber);
+      } else {
+        return;
       }
-      return 0;
     }
   }
 }
