@@ -60,7 +60,7 @@ void main() {
         Item.printItem();
         break;
       case "DC":
-        Customer.deleteCustomer();
+        Customer.deleteCustomer(customers);
         break;
       case "DA":
         deleteAll();

@@ -52,29 +52,21 @@ class Customer {
   }
 
   // TODO: The function isn't complete, it actually don't work
-  static void deleteCustomer() {
-    String temp;
-    if (printCustomers() == 1) {
-      return;
-    } else {
-      print("Welcher Kunde soll gelöscht werden? (0-${customers[items.length - 1]._count}");
-      int number = int.parse(stdin.readLineSync());
+  static int deleteCustomer(List<Customer> customers) {
+    //int tmp = 0;
+    int returnValue = printCustomers();
+    if (returnValue == 1) {
+      return 1;
+    } else if (returnValue == 0) {
+      print("Welcher Kunde soll gelöscht werden? (0-${customers.length - 1})?");
+      int deleteNumber = int.parse(stdin.readLineSync());
       print(
-          "Sind Sie sicher, dass Sie \"${customers[number]._firstName} ${customers[number]._lastName}\" LÖSCHEN möchten? (Y/N)");
-      do {
-        temp = stdin.readLineSync().toUpperCase();
-      } while (temp != "Y" && temp != "N");
-      if (temp == "Y") {
-        String firstName = customers[number]._firstName;
-        String lastName = customers[number]._lastName;
-        customers.removeAt(number);
-        print("Der Kunde \"$firstName $lastName\" wurde gelöscht!");
-        print("");
-        printCustomers();
-      } else {
-        return;
+          "Sind sie Sicher, den Kunden ${customers[deleteNumber]._firstName} ${customers[deleteNumber]._lastName} löschen möchten? (Y/N)");
+      String yesNo = stdin.readLineSync().toUpperCase();
+      if (yesNo == "Y") {
+        customers.removeAt(deleteNumber);
       }
+      return 0;
     }
-
   }
 }
