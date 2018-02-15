@@ -5,9 +5,6 @@ import 'dart:io';
 part 'customer.dart';
 part 'item.dart';
 
-
-
-
 String start() {
   print("Wählen Sie eine Option:");
   print(

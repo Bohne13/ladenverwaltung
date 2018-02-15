@@ -10,9 +10,6 @@ class Customer {
 
   List<Customer> get customers => _customers;
 
-  // int get count => _count;
-  //double get account => _account;
-
   //set count(int count) {
   //  _count = count;
   //}
@@ -62,7 +59,8 @@ class Customer {
     if (returnValue == 1) {
       return;
     } else if (returnValue == 0) {
-      print("Welcher Kunde soll gelöscht werden? (0-${_customers.length - 1})?");
+      print(
+          "Welcher Kunde soll gelöscht werden? (0-${_customers.length - 1})?");
       int deleteNumber = int.parse(stdin.readLineSync());
       print(
           "Sind sie sicher, den Kunden ${_customers[deleteNumber]._firstName} ${_customers[deleteNumber]._lastName} zu löschen? (Y/N)");
