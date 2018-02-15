@@ -6,7 +6,7 @@ part 'customer.dart';
 part 'item.dart';
 
 List<Customer> customers = [];
-List<Item> items = [];
+
 
 String start() {
   print("Wählen Sie eine Option:");
@@ -15,7 +15,7 @@ String start() {
   return stdin.readLineSync().toUpperCase();
 }
 
-void deleteAll() {
+void deleteAll(List<Item> items) {
   String temp = "";
   print("Sind Sie sicher, alle KUNDEN und alle ARTIKEL zu löschen? (Y/N)");
   do {
@@ -63,10 +63,10 @@ void main() {
         Customer.deleteCustomer(customers);
         break;
       case "DA":
-        deleteAll();
+        deleteAll(Item._items);
         break;
       case "DI":
-        Item.deleteItem(items);
+        Item.deleteItem(Item._items);
         break;
       default:
         break;
