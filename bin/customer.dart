@@ -6,6 +6,10 @@ class Customer {
   double _account = 0.0;
   int _count;
 
+  static List<Customer> _customers = [];
+
+  List<Customer> get customers => _customers;
+
   // int get count => _count;
   //double get account => _account;
 
@@ -16,7 +20,7 @@ class Customer {
   Customer(this._firstName, this._lastName, this._account, this._count);
 
   static int setCount() {
-    int tempCount = customers[customers.length - 1]._count;
+    int tempCount = _customers[_customers.length - 1]._count;
     return tempCount + 1;
   }
 
@@ -28,23 +32,23 @@ class Customer {
     String lastName = stdin.readLineSync();
     print("Kontostand:");
     double account = double.parse(stdin.readLineSync());
-    if (customers.length == 0) {
-      customers.add(new Customer(firstName, lastName, account, 0));
+    if (_customers.length == 0) {
+      _customers.add(new Customer(firstName, lastName, account, 0));
     } else {
-      customers
+      _customers
           .add(new Customer(firstName, lastName, account, Customer.setCount()));
     }
   }
 
   static int printCustomers() {
-    if (customers.length == 0) {
+    if (_customers.length == 0) {
       print("Es ist aktuell kein Kunde in der Liste.");
       print("");
       return 1;
     } else {
-      for (int i = 0; i < customers.length; i++) {
+      for (int i = 0; i < _customers.length; i++) {
         print(
-            "${customers[i]._count}: ${customers[i]._firstName} ${customers[i]._lastName}: ${customers[i]._account}€");
+            "${_customers[i]._count}: ${_customers[i]._firstName} ${_customers[i]._lastName}: ${_customers[i]._account}€");
       }
     }
     print("");
@@ -52,22 +56,22 @@ class Customer {
   }
 
   // TODO: The function isn't complete, it actually don't work
-  static void deleteCustomer(List<Customer> customers) {
+  static void deleteCustomer(List<Customer> _customers) {
     int returnValue = printCustomers();
     String yesNo;
     if (returnValue == 1) {
       return;
     } else if (returnValue == 0) {
-      print("Welcher Kunde soll gelöscht werden? (0-${customers.length - 1})?");
+      print("Welcher Kunde soll gelöscht werden? (0-${_customers.length - 1})?");
       int deleteNumber = int.parse(stdin.readLineSync());
       print(
-          "Sind sie sicher, den Kunden ${customers[deleteNumber]._firstName} ${customers[deleteNumber]._lastName} zu löschen? (Y/N)");
+          "Sind sie sicher, den Kunden ${_customers[deleteNumber]._firstName} ${_customers[deleteNumber]._lastName} zu löschen? (Y/N)");
       // TODO: yesNo schould be prooft if input is a String
       do {
         yesNo = stdin.readLineSync().toUpperCase();
       } while (yesNo != "Y" && yesNo != "N");
       if (yesNo == "Y") {
-        customers.removeAt(deleteNumber);
+        _customers.removeAt(deleteNumber);
       } else {
         return;
       }

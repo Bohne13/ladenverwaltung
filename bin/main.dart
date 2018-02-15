@@ -5,7 +5,7 @@ import 'dart:io';
 part 'customer.dart';
 part 'item.dart';
 
-List<Customer> customers = [];
+
 
 
 String start() {
@@ -15,7 +15,7 @@ String start() {
   return stdin.readLineSync().toUpperCase();
 }
 
-void deleteAll(List<Item> items) {
+void deleteAll(List<Customer> customers, List<Item> items) {
   String temp = "";
   print("Sind Sie sicher, alle KUNDEN und alle ARTIKEL zu löschen? (Y/N)");
   do {
@@ -60,10 +60,10 @@ void main() {
         Item.printItem();
         break;
       case "DC":
-        Customer.deleteCustomer(customers);
+        Customer.deleteCustomer(Customer._customers);
         break;
       case "DA":
-        deleteAll(Item._items);
+        deleteAll(Customer._customers, Item._items);
         break;
       case "DI":
         Item.deleteItem(Item._items);
