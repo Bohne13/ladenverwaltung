@@ -49,22 +49,22 @@ class Item {
     return 0;
   }
 
-  static void deleteItem(List<Item> items) {
+  static void deleteItem(List<Item> _items) {
     int returnValue = printItem();
     String yesNo;
     if (returnValue == 1) {
       return;
     } else if (returnValue == 0) {
-      print("Welcher Artikel soll gelöscht werden? (0-${})?"); // TODO: last number should be the last number which is in List items
+      print("Welcher Artikel soll gelöscht werden? (0-)?"); // TODO: last number should be the last number which is in List items
       int deleteNumber = int.parse(stdin.readLineSync());
       print(
-          "Sind Sie sicher, den Artikel ${items[deleteNumber]._name} zu löschen? (Y/N)");
+          "Sind Sie sicher, den Artikel ${_items[deleteNumber]._name} zu löschen? (Y/N)");
       // TODO: yesNo should be proofed if input is a String
       do {
         yesNo = stdin.readLineSync().toUpperCase();
       } while (yesNo != "Y" && yesNo != "N");
       if (yesNo == "Y") {
-        items.removeAt(deleteNumber);
+        _items.removeAt(deleteNumber);
       } else {
         return;
       }
