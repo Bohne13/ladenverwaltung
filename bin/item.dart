@@ -20,7 +20,7 @@ class Item {
     return tmpCount + 1;
   }
 
-  // TODO: Exception handling by for all input streams missing
+  // TODO: Exception handling for all input streams missing
   static void newItem() {
     print("Artikel-Name:");
     String name = stdin.readLineSync();

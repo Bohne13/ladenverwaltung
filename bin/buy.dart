@@ -1,7 +1,6 @@
 part of finance;
 
 int buyItem() {
-  int count
   int selectCustomer = Customer.selectCustomer();
   int selectItem = Item.selectItem();
   Customer._customers[selectCustomer]._account -= Item._items[selectItem]
