@@ -75,4 +75,15 @@ class Customer {
       }
     }
   }
+
+  static int selectCustomer() {
+    int returnValue = printCustomers();
+    if (returnValue == 1) {
+      return 1;
+    } else if (returnValue == 0) {
+      print("Welcher Kunde soll ausgewählt werden? (0-x)");
+      int selectNumber = int.parse(stdin.readLineSync());
+      return selectNumber;
+    }
+  }
 }

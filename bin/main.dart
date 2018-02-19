@@ -4,11 +4,13 @@ import 'dart:io';
 
 part 'customer.dart';
 part 'item.dart';
+part 'buy.dart';
 
 String start() {
   print("Wählen Sie eine Option:");
-  print(
-      "(NC) New Customer, (Qu)ite, (PC) print customer, (NI) new item,\n(PI) print item, (DC) delete customer, (DI) delete item, (DA) delete all,\n");
+  print("(NC) New Customer, (Qu)ite, (PC) print customer, (NI) new item,\n"
+      "(PI) print item, (DC) delete customer, (DI) delete item, (DA) delete "
+      "all, \n(BI) buy item");
   return stdin.readLineSync().toUpperCase();
 }
 
@@ -64,6 +66,9 @@ void main() {
         break;
       case "DI":
         Item.deleteItem(Item._items);
+        break;
+      case "BI":
+        buyItem();
         break;
       default:
         break;

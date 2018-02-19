@@ -13,7 +13,6 @@ class Item {
   //  _items = items;
   //}
 
-
   Item(this._name, this._price, this._count);
 
   static int setCount() {
@@ -21,7 +20,7 @@ class Item {
     return tmpCount + 1;
   }
 
-  // TODO: Exception handling by fo all input streams missing
+  // TODO: Exception handling by for all input streams missing
   static void newItem() {
     print("Artikel-Name:");
     String name = stdin.readLineSync();
@@ -55,7 +54,8 @@ class Item {
     if (returnValue == 1) {
       return;
     } else if (returnValue == 0) {
-      print("Welcher Artikel soll gelöscht werden? (0-)?"); // TODO: last number should be the last number which is in List items
+      print(
+          "Welcher Artikel soll gelöscht werden? (0-)?"); // TODO: last number should be the last number which is in List items
       int deleteNumber = int.parse(stdin.readLineSync());
       print(
           "Sind Sie sicher, den Artikel ${_items[deleteNumber]._name} zu löschen? (Y/N)");
@@ -68,6 +68,17 @@ class Item {
       } else {
         return;
       }
+    }
+  }
+
+  static int selectItem() {
+    int returnValue = printItem();
+    if (returnValue == 1) {
+      return 1;
+    } else if (returnValue == 0) {
+      print("Welcher Artikel soll ausgewählt werden? (0-x");
+      int selectNumber = int.parse(stdin.readLineSync());
+      return selectNumber;
     }
   }
 }
