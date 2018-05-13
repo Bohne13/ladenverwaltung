@@ -8,9 +8,15 @@ part 'buy.dart';
 
 String start() {
   print("Wählen Sie eine Option:");
-  print("(NC) New Customer, (Qu)ite, (PC) print customer, (NI) new item,\n"
-      "(PI) print item, (DC) delete customer, (DI) delete item, (DA) delete "
-      "all, \n(BI) buy item");
+  print("(NC) New Customer\n"
+      "(NI) New Item"
+      "(PC) Print Customer\n"
+      "(PI) Print Item\n"
+      "(DC) Delete Customer\n"
+      "(DI) Delete Item\n"
+      "(DA) Delete All\n"
+      "(BI) Buy Item"
+      "(Qu)ite\n");
   return stdin.readLineSync().toUpperCase();
 }
 
